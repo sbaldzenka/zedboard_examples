@@ -5,7 +5,7 @@
 
 `timescale 1ns/100ps
 
-module zedboard_uart_top
+module zedboard_ps_ddr_top
 (
     // ddr3 interface
     inout  wire [14:0] io_ddr3_addr,

@@ -1,3 +1,4 @@
+build
 vivado/*
 !vivado/zedboard_uart.xpr
 

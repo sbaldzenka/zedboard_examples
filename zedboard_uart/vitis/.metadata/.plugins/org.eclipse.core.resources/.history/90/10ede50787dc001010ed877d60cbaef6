@@ -1,0 +1,29 @@
+// project : zedboard uart
+// date    : 18.12.2025
+// author  : siarhei baldzenka
+// e-mail  : venera.electronica@gmail.com
+
+#include <stdio.h>
+#include "platform.h"
+#include "xil_printf.h"
+#include "xparameters.h"
+#include "xgpio.h"
+
+#define GPIO_0_ID        XPAR_GPIO_0_DEVICE_ID
+#define GPIO_LED_CHANNEL 1
+
+XGpio gpio_0;
+
+u32 status;
+
+int main()
+{
+    init_platform();
+    status = XGpio_Initialize(&gpio_0, GPIO_0_ID);
+    XGpio_DiscreteWrite(&gpio_0, GPIO_LED_CHANNEL, 0xAA);
+
+    xil_printf("This is ZedBoard!\n\r");
+
+    cleanup_platform();
+    return 0;
+}

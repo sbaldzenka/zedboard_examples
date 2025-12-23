@@ -158,19 +158,6 @@
         <Option Name="SrcSet" Val="sources_1"/>
       </Config>
     </FileSet>
-    <FileSet Name="utils_1" Type="Utils" RelSrcDir="$PSRCDIR/utils_1" RelGenDir="$PGENDIR/utils_1">
-      <Filter Type="Utils"/>
-      <File Path="$PSRCDIR/utils_1/imports/synth_1/zedboard_uart_top.dcp">
-        <FileInfo>
-          <Attr Name="UsedIn" Val="synthesis"/>
-          <Attr Name="UsedIn" Val="implementation"/>
-          <Attr Name="AutoDcp" Val="1"/>
-        </FileInfo>
-      </File>
-      <Config>
-        <Option Name="TopAutoSet" Val="TRUE"/>
-      </Config>
-    </FileSet>
     <FileSet Name="bd_processing_system7_0_0" Type="BlockSrcs" RelSrcDir="$PSRCDIR/bd_processing_system7_0_0" RelGenDir="$PGENDIR/bd_processing_system7_0_0">
       <Config>
         <Option Name="TopModule" Val="bd_processing_system7_0_0"/>

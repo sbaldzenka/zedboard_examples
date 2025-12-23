@@ -35,3 +35,4 @@ src/bd/ip/bd_xbar_0/*
 !src/bd/ip/bd_xbar_0/bd_xbar_0.xml
 
 *.log
+vitis/.analytics

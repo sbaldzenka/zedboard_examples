@@ -53,8 +53,8 @@ module zedboard_axi_dma_top
         .FIXED_IO_ps_clk   (                 ),
         .FIXED_IO_ps_porb  (                 ),
         .FIXED_IO_ps_srstb (                 ),
-        .UART_0_rxd        ( i_uart_rx       ),
-        .UART_0_txd        ( o_uart_tx       )
+        .UART_rxd          ( i_uart_rx       ),
+        .UART_txd          ( o_uart_tx       )
     );
 
 endmodule

@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="ASCII"?>
+<sdkproject:SdkProject xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:sdkproject="http://www.xilinx.com/sdkproject" name="zedboard_axi_dma_app" location="/mnt/ssd_240Gb/github/zedboard_examples/zedboard_axi_dma/vitis/zedboard_axi_dma_app" platform="/mnt/ssd_240Gb/github/zedboard_examples/zedboard_axi_dma/vitis/zedboard_axi_dma_platform/export/zedboard_axi_dma_platform/zedboard_axi_dma_platform.xpfm" platformUID="xilinx:::0.0(custom)" systemProject="zedboard_axi_dma_app_system" sysConfig="zedboard_axi_dma_platform" runtime="C/C++" cpu="standalone_domain" cpuInstance="ps7_cortexa9_0" os="standalone" mssSignature="a0bb31a53db16f77d7cbe5b88adbb7bd">
+  <configuration name="Debug" id="xilinx.gnu.armv7.exe.debug.1946407394">
+    <configBuildOptions xsi:type="sdkproject:SdkOptions"/>
+    <lastBuildOptions xsi:type="sdkproject:SdkOptions"/>
+  </configuration>
+  <configuration name="Release" id="xilinx.gnu.armv7.exe.release.936441065" dirty="true">
+    <configBuildOptions xsi:type="sdkproject:SdkOptions"/>
+  </configuration>
+  <template appTemplateName="hello_world"/>
+</sdkproject:SdkProject>

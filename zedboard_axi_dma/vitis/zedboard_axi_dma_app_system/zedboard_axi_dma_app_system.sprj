@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="ASCII"?>
+<systemproject:SystemProject xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:sdsproject="http://www.xilinx.com/sdsproject" xmlns:systemproject="http://www.xilinx.com/systemproject" name="zedboard_axi_dma_app_system" platform="/mnt/ssd_240Gb/github/zedboard_examples/zedboard_axi_dma/vitis/zedboard_axi_dma_platform/export/zedboard_axi_dma_platform/zedboard_axi_dma_platform.xpfm" platformUID="xilinx:::0.0(custom)" sysConfig="zedboard_axi_dma_platform" runtime="C/C++" rootFSLocation="" linuxImage="" sysroot="">
+  <configuration name="Debug" id="com.xilinx.sdx.system.managedbuilder.debugConfiguration.1735529989">
+    <configBuildOptions xsi:type="systemproject:SystemOptions">
+      <applications name="zedboard_axi_dma_app" domainName="standalone_domain" domainPrettyName="standalone_domain" appBuildConfig="Debug"/>
+      <options xsi:type="sdsproject:Option" gensdcard="true" dmclkid="0"/>
+    </configBuildOptions>
+  </configuration>
+  <configuration name="Release" id="com.xilinx.sdx.system.managedbuilder.releaseConfiguration.1000799414">
+    <configBuildOptions xsi:type="systemproject:SystemOptions">
+      <applications name="zedboard_axi_dma_app" domainName="standalone_domain" domainPrettyName="standalone_domain" appBuildConfig="Release"/>
+      <options xsi:type="sdsproject:Option" gensdcard="true" dmclkid="0"/>
+    </configBuildOptions>
+  </configuration>
+</systemproject:SystemProject>

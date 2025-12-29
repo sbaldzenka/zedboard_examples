@@ -5,3 +5,4 @@ This repository contain project examples for ZedBoard devkit.
 > Vivado IDE version: 2022.1
 
 - zedboard_uart - UART and GPIO test ZYNQ project;
+- zedboard_axi_dma - Xilinx AXI DMA IP test ZYNQ project;

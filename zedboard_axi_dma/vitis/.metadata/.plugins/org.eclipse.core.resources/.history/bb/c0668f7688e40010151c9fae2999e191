@@ -1,0 +1,77 @@
+// project : zedboard axi dma
+// date    : 23.12.2025
+// author  : siarhei baldzenka
+// e-mail  : venera.electronica@gmail.com
+
+#include <stdio.h>
+#include <string.h>
+#include <stdint.h>
+#include "platform.h"
+#include "xparameters.h"
+#include "xil_printf.h"
+#include "xil_io.h"
+#include "xil_cache.h"
+
+#define DDR_BUF_OUT_BASEADDR XPAR_PS7_DDR_0_S_AXI_BASEADDR + 0x00
+#define DDR_BUF_IN_BASEADDR  XPAR_PS7_DDR_0_S_AXI_BASEADDR + 0xA0
+
+#define DMA_BASEADDR         XPAR_AXI_DMA_0_BASEADDR
+#define DMA_MM2S_DMACR_REG   0x00
+#define DMA_MM2S_DMASR_REG   0x04
+#define DMA_MM2S_SA_REG      0x18
+#define DMA_MM2S_SA_MSB_REG  0x1C
+#define DMA_MM2S_LENGTH_REG  0x28
+#define DMA_S2MM_DMACR_REG   0x30
+#define DMA_S2MM_DMASR_REG   0x34
+#define DMA_S2MM_DA_REG      0x48
+#define DMA_S2MM_DA_MSB_REG  0x4C
+#define DMA_S2MM_LENGTH_REG  0x58
+
+uint32_t *mem_ptr = (uint32_t *)DDR_BUF_OUT_BASEADDR;
+uint32_t data[16] = {0x00000000, 0x11111111, 0x22222222, 0x33333333,
+		             0x44444444, 0x55555555, 0x66666666, 0x77777777,
+					 0x88888888, 0x99999999, 0xAAAAAAAA, 0xBBBBBBBB,
+					 0xCCCCCCCC, 0xDDDDDDDD, 0xEEEEEEEE, 0xFFFFFFFF};
+
+int main()
+{
+    init_platform();
+
+    // Flush and disable data cache
+    Xil_DCacheFlush();
+    Xil_DCacheDisable();
+    // Disable instruction cache
+    Xil_ICacheDisable();
+
+    print("This is ZedBoard DDR3 application!\n\r");
+
+    // Create test data
+    memset(mem_ptr, 0x55, 64);
+    memcpy(DDR_BUF_OUT_BASEADDR + 0x40, data, sizeof data);
+
+    // DMA_MM2S_DMACR_REG.Reset = 1
+	Xil_Out32(DMA_BASEADDR + DMA_MM2S_DMACR_REG, 0x00000004);
+	// Wait reset
+	while ((Xil_In32(DMA_BASEADDR + DMA_MM2S_DMASR_REG) & 0x00000001) == 0);
+	// DMA_MM2S_DMACR_REG.Reset = 0
+	Xil_Out32(DMA_BASEADDR + DMA_MM2S_DMACR_REG, 0x00000000);
+
+	// Send data from memory to stream
+    Xil_Out32(DMA_BASEADDR + DMA_MM2S_DMACR_REG, 0x00000001);
+    Xil_Out32(DMA_BASEADDR + DMA_MM2S_SA_MSB_REG, 0x00000000);
+    Xil_Out32(DMA_BASEADDR + DMA_MM2S_SA_REG, DDR_BUF_OUT_BASEADDR);
+    Xil_Out32(DMA_BASEADDR + DMA_MM2S_LENGTH_REG, 128);
+
+    // Ждем пока Idle != 1
+    while (!(Xil_In32(DMA_BASEADDR + 0x04) & 0x00000002));
+
+    Xil_Out32(DMA_BASEADDR + DMA_S2MM_DMACR_REG, 0x00000001);
+    Xil_Out32(DMA_BASEADDR + DMA_S2MM_DA_MSB_REG, 0x00000000);
+    Xil_Out32(DMA_BASEADDR + DMA_S2MM_DA_REG, DDR_BUF_IN_BASEADDR);
+    Xil_Out32(DMA_BASEADDR + DMA_S2MM_LENGTH_REG, 128);
+
+    print("Finish!\n\r");
+
+    cleanup_platform();
+    return 0;
+}

@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<section name="Workbench">
+	<item key="sdx.custom.platform.repository.locations" value="/mnt/ssd_240Gb/github/zedboard_examples/zedboard_axi_dma/vitis/zedboard_axi_dma_platform/export/zedboard_axi_dma_platform"/>
+</section>

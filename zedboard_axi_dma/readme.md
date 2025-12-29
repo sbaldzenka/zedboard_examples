@@ -2,9 +2,9 @@
 
 Read and write test data to DDR3 via Xilinx AXI DMA IP core.
 
-![Block Design](/../doc/img/zedboard_axi_dma_bd.png)
+![Block Design](../doc/img/zedboard_axi_dma_bd.png)
 
-![Memory](/../doc/img/zedboard_axi_dma_memory.png)
+![Memory](../doc/img/zedboard_axi_dma_memory.png)
 
 > Vivado IDE version: 2022.1
 
